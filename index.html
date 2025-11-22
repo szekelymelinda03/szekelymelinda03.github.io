@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <title>Interaktív diagramok</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fafafa;
+    }
+    header {
+      background: #3b3b3b;
+      color: white;
+      padding: 1.4rem;
+      text-align: center;
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.12);
+      margin-bottom: 35px;
+    }
+    h2 {
+      margin-top: 0;
+      font-size: 20px;
+      border-left: 4px solid #3b3b3b;
+      padding-left: 8px;
+    }
+    canvas {
+      max-width: 100%;
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>Interaktív grafikonok</h1>
+    <p>Példák különböző típusú adatmegjelenítésre.</p>
+  </header>
+
+  <main>
+
+    <div class="box">
+      <h2>Vonaldiagram</h2>
+      <canvas id="chart1"></canvas>
+      <p>Egy hét adatai egyszerűen ábrázolva.</p>
+    </div>
+
+    <div class="box">
+      <h2>Oszlopdiagram</h2>
+      <canvas id="chart2"></canvas>
+      <p>Bevétellel kapcsolatos példaértékek.</p>
+    </div>
+
+    <div class="box">
+      <h2>Kördiagram</h2>
+      <canvas id="chart3"></canvas>
+      <p>Három termék arányai.</p>
+    </div>
+
+  </main>
+
+  <script>
+    new Chart(document.getElementById('chart1'), {
+      type: 'line',
+      data: {
+        labels: ['Hétfő', 'Kedd', 'Szerda', 'Csütörtök', 'Péntek', 'Szombat', 'Vasárnap'],
+        datasets: [{
+          label: 'Értékek',
+          data: [12, 19, 3, 5, 2, 3, 7],
+          borderWidth: 2,
+          borderColor: 'black'
+        }]
+      },
+      options: { responsive: true }
+    });
+
+    new Chart(document.getElementById('chart2'), {
+      type: 'bar',
+      data: {
+        labels: ['1. né.', '2. né.', '3. né.', '4. né.'],
+        datasets: [{
+          label: 'Bevétel',
+          data: [150, 200, 180, 230],
+          backgroundColor: ['gray','silver','black','darkgray']
+        }]
+      },
+      options: { responsive: true }
+    });
+
+    new Chart(document.getElementById('chart3'), {
+      type: 'pie',
+      data: {
+        labels: ['A', 'B', 'C'],
+        datasets: [{
+          data: [40, 35, 25],
+          backgroundColor: ['gray','silver','black']
+        }]
+      },
+      options: { responsive: true }
+    });
+  </script>
+
+</body>
+</html>
